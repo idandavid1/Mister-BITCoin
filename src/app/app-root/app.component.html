@@ -1,3 +1,7 @@
 <section>
-  <home></home>
+  <app-header [page]="page" (switchPage)="switchPage($event)"></app-header>
+  <main [ngSwitch]="page">
+    <home *ngSwitchCase="'home'"></home>
+    <contact-index *ngSwitchCase="'contact'"></contact-index>
+  </main>
 </section>
