@@ -1,1 +1,7 @@
-<p>contact-details works!</p>
+<article *ngIf="contact" class="contact-details">
+    <span>Name: {{ contact.name }}</span>
+    <span>Email: {{ contact.email }}</span>
+    <span>Phone: {{ contact.phone }}</span>
+    <img src="https://robohash.org/{{contact._id}}?set=set5" alt="" />
+    <button (click)="onBack()">Back</button>
+</article>
