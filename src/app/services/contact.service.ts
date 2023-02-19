@@ -131,9 +131,7 @@ export class ContactService {
     private _contacts$ = new BehaviorSubject<Contact[]>([])
     public contacts$ = this._contacts$.asObservable()
 
-    constructor() {
-    }
-
+    constructor() {}
 
     public loadContacts(filterBy: { term: string }): void {
         let contacts = this._contactsDb;
@@ -143,20 +141,13 @@ export class ContactService {
         this._contacts$.next(this._sort(contacts))
     }
 
-
     public getContactById(id: string): Observable<Contact> {
-        //mock the server work
         const contact = this._contactsDb.find(contact => contact._id === id)
-
-        //return an observable
         return contact ? of(contact) : throwError(() => `Contact id ${id} not found!`)
     }
 
     public deleteContact(id: string) {
-        //mock the server work
         this._contactsDb = this._contactsDb.filter(contact => contact._id !== id)
-
-        // change the observable data in the service - let all the subscribers know
         this._contacts$.next(this._contactsDb)
     }
 
@@ -165,14 +156,11 @@ export class ContactService {
     }
 
     private _updateContact(contact: Contact) {
-        //mock the server work
         this._contactsDb = this._contactsDb.map(c => contact._id === c._id ? contact : c)
-        // change the observable data in the service - let all the subscribers know
         this._contacts$.next(this._sort(this._contactsDb))
     }
 
     private _addContact(contact: Contact) {
-        //mock the server work
         const newContact = new Contact(contact.name, contact.email, contact.phone);
         if (typeof newContact.setId === 'function') newContact.setId(getRandomId());
         this._contactsDb.push(newContact)
@@ -200,7 +188,6 @@ export class ContactService {
         })
     }
 }
-
 
 function getRandomId(length = 8): string {
     let result = '';
