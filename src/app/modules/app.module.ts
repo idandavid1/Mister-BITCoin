@@ -10,6 +10,8 @@ import { ContactDetailsComponent } from '../pages/contact-details/contact-detail
 import { ContactListComponent } from '../cmps/contact-list/contact-list.component';
 import { ContactPreviewComponent } from '../cmps/contact-preview/contact-preview.component';
 import { AppHeaderComponent } from '../cmps/app-header/app-header.component';
+import { ContactFilterComponent } from '../cmps/contact-filter/contact-filter.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { AppHeaderComponent } from '../cmps/app-header/app-header.component';
     ContactDetailsComponent,
     ContactListComponent,
     ContactPreviewComponent,
-    AppHeaderComponent
+    AppHeaderComponent,
+    ContactFilterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
