@@ -1,0 +1,7 @@
+<header>
+  <div>Logo</div>
+  <nav>
+    <span [class]="page === 'home' ? 'active' : ''" (click)="onSwitchPage('home')">home</span>
+    <span [class]="page === 'contact' ? 'active' : ''" (click)="onSwitchPage('contact')">contact</span>
+  </nav>
+</header>
