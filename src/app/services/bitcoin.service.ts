@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { map } from 'rxjs/operators'
+import { map, tap } from 'rxjs/operators'
 import { lastValueFrom } from 'rxjs';
 
 @Injectable({
@@ -11,23 +11,25 @@ export class BitcoinService {
 
   public getRate() {
     const url = 'https://blockchain.info/tobtc?currency=USD&value=1'
-    return lastValueFrom(this.http.get<{ answer: string }>(url)
-      .pipe(
-        map(res => res.answer),
-      ))
+    return this.getResult('RATE', url)
   }
 
   public getMarketPrice() {
     const url = 'https://api.blockchain.info/charts/market-price?timespan=5months&format=json&cors=true'
-    return lastValueFrom(this.http.get<{ answer: string }>(url)
-      .pipe(
-        map(res => res.answer),
-
-      ))
+    return this.getResult('MARKET_PRICE', url)
   }
 
   public getConfirmedTransactions() {
 
+  }
+
+  getResult(type: string, url: string) {
+    const result = loadFromStorage(type)
+    if (result) return Promise.resolve(result)
+    return lastValueFrom(this.http.get<{ answer: string }>(url)
+      .pipe(
+        tap(res => saveToStorage(type, res)),
+      ))
   }
 }
 

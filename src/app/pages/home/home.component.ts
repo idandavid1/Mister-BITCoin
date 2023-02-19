@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BitcoinService } from 'src/app/services/bitcoin.service';
 
 @Component({
   selector: 'home',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
+  constructor(private bitcoinService: BitcoinService) { }
+  rate: string = '';
+  async ngOnInit() {
+    this.rate = await this.bitcoinService.getRate()
+  }
 }
