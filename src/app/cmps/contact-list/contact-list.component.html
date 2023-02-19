@@ -1,5 +1,5 @@
 <ul class="contact-list">
-  <li *ngFor="let contact of contacts">
+    <li *ngFor="let contact of contacts">
       <contact-preview (selectContact)="selectContact.emit($event)" [contact]="contact"></contact-preview>
-  </li>
+    </li>
 </ul>

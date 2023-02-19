@@ -20,7 +20,7 @@ export class ContactDetailsComponent implements OnInit {
     const contact = await lastValueFrom(this.contactService.getContactById(this.contactId))
     this.contact = contact;
   }
-
+  
   onBack() {
     this.selectContact.emit('')
   }

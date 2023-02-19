@@ -1,0 +1,52 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/layout";
+
+.home-page {
+    background-image: linear-gradient(105deg,
+            hsl(238deg 100% 10%) 71%,
+            hsl(237deg 45% 20%) 92%,
+            hsl(243deg 27% 29%) 97%,
+            hsl(245deg 19% 38%) 99%,
+            hsl(247deg 13% 48%) 100%,
+            hsl(248deg 12% 57%) 100%,
+            hsl(249deg 13% 68%) 100%,
+            hsl(249deg 13% 78%) 100%,
+            hsl(250deg 13% 89%) 100%,
+            hsl(0deg 0% 100%) 100%);
+    min-height: calc(100vh - 37px);
+
+
+    img {
+        max-width: 80%;
+    }
+
+    .text{
+        width: 569px;
+    }
+    h2 {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        font-size: 87px;
+        line-height: 100%;
+        text-transform: capitalize;
+        margin-bottom: 60px;
+    }
+
+    .description {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .main-content {
+        >*{
+            display: flex;
+            justify-content: space-between;
+            margin: 161px 0;
+        }
+    }
+    
+
+}

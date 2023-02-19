@@ -11,6 +11,7 @@ import { ContactListComponent } from '../cmps/contact-list/contact-list.componen
 import { ContactPreviewComponent } from '../cmps/contact-preview/contact-preview.component';
 import { AppHeaderComponent } from '../cmps/app-header/app-header.component';
 import { ContactFilterComponent } from '../cmps/contact-filter/contact-filter.component';
+import { StatsComponent } from '../pages/stats/stats.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -22,13 +23,14 @@ import { FormsModule } from '@angular/forms';
     ContactListComponent,
     ContactPreviewComponent,
     AppHeaderComponent,
-    ContactFilterComponent
+    ContactFilterComponent,
+    StatsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

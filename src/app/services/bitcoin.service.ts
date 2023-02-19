@@ -23,9 +23,15 @@ export class BitcoinService {
 
   }
 
+  getAvgBlockSize() {
+    const url = 'https://api.blockchain.info/charts/avg-block-size?timespan=1months&format=json&cors=true'
+    return this.getResult('AVG_BLOCK_SIZE', url)
+  }
+
   getResult(type: string, url: string) {
     const result = loadFromStorage(type)
     if (result) return Promise.resolve(result)
+    console.log('result')
     return lastValueFrom(this.http.get<{ answer: string }>(url)
       .pipe(
         tap(res => saveToStorage(type, res)),
