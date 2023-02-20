@@ -21,7 +21,7 @@ export class AvgMonthsChartComponent {
       data: {
         labels: this.getMonthNames(prices.values),
         datasets: [{
-          label: prices.name,
+          label: 'Market Price average 5 months',
           data: this.getData(prices.values),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -47,12 +47,10 @@ export class AvgMonthsChartComponent {
           y: {
             beginAtZero: true
           }
-        }
+        },
       }
     });
   }
-
-
 
   getMonthAvg(values: Value[]) {
     const sum = values.reduce((acc, value) => acc + value.y, 0)
