@@ -6,10 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  page = 'home'
 
-  switchPage(page: string) {
-    console.log('page:', page)
-    this.page = page
-  }
 }

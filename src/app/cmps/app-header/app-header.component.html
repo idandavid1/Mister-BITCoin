@@ -1,11 +1,11 @@
 <header>
   <div class="main-container">
     <div class="header-content">
-      <div class="logo">Logo</div>
+      <div class="logo" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Logo</div>
       <nav>
-        <span [class]="page === 'home' ? 'active' : ''" (click)="onSwitchPage('home')">Home</span>
-        <span [class]="page === 'contact' ? 'active' : ''" (click)="onSwitchPage('contact')">Contact</span>
-        <span [class]="page === 'stats' ? 'active' : ''" (click)="onSwitchPage('stats')">Stats</span>
+        <span routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</span>
+        <span routerLink="/contact" routerLinkActive="active">Contact</span>
+        <span routerLink="/stats" routerLinkActive="active">Stats</span>
       </nav>
     </div>
   </div>

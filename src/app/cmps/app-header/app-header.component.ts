@@ -6,10 +6,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./app-header.component.scss']
 })
 export class AppHeaderComponent {
-  @Input() page!: string
-  @Output() switchPage = new EventEmitter<string>
 
-  onSwitchPage(page: string) {
-    this.switchPage.emit(page)
-  }
+
 }
