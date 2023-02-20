@@ -1,7 +1,10 @@
 <article class="contact-details">
-    <span>Name: {{ contact.name }}</span>
-    <span>Email: {{ contact.email }}</span>
-    <span>Phone: {{ contact.phone }}</span>
-    <img src="https://robohash.org/{{contact._id}}?set=set5" alt="" />
-    <button (click)="onBack()">Back</button>
+    <fa-icon (click)="onBack()" class="icon back" [icon]="faCircleArrowLeft"></fa-icon>
+    <fa-icon [routerLink]="['/contact/edit' , contact._id]" class="icon edit" [icon]="faUserPen"></fa-icon>
+    <div class="contact-info">
+        <span>Name: {{ contact.name }}</span>
+        <span>Email: {{ contact.email }}</span>
+        <span>Phone: {{ contact.phone }}</span>
+        <img src="https://robohash.org/{{contact._id}}?set=set5" alt="" />
+    </div>
 </article>

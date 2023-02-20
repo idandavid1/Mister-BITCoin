@@ -18,7 +18,7 @@
     color: white;
 
     img {
-        max-width: 40%;
+        max-width: 400px;
         height: 40%;
     }
 
@@ -33,21 +33,33 @@
         text-transform: capitalize;
         margin-bottom: 60px;
     }
-
+    
     .description {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Outfit', sans-serif;
         font-weight: 400;
-        font-size: 12px;
+        font-size: 18px;
         line-height: 15px;
+        letter-spacing: 1px;
+        word-spacing: 2px;
+        line-height: 20px;
     }
-
+    
     .main-content {
         >*{
             display: flex;
             justify-content: space-between;
             margin: 161px 0;
+
+            @media (max-width:820px) {
+                &{
+                    align-items: center;
+                    gap: 70px;
+                    flex-direction: column;
+                }
+            }
         }
     }
+
     
 
 }
