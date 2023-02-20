@@ -2,6 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
+import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faUserPen } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'contact-details',
@@ -17,6 +20,9 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
 
   contact !: Contact
   subscription!: Subscription
+  faCircleArrowLeft = faCircleArrowLeft
+  faUserPen = faUserPen
+
 
   ngOnInit(): void {
     // this.subscription = this.route.params.subscribe(async param => {

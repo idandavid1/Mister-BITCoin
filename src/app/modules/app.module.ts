@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { ContactEditComponent } from '../pages/contact-edit/contact-edit.component';
+import { AvgMonthsChartComponent } from '../cmps/avg-months-chart/avg-months-chart.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ContactEditComponent } from '../pages/contact-edit/contact-edit.compone
     AppHeaderComponent,
     ContactFilterComponent,
     StatsComponent,
+    AvgMonthsChartComponent
   ],
   imports: [
     BrowserModule,
