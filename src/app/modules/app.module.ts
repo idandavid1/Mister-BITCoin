@@ -13,6 +13,7 @@ import { AppHeaderComponent } from '../cmps/app-header/app-header.component';
 import { ContactFilterComponent } from '../cmps/contact-filter/contact-filter.component';
 import { StatsComponent } from '../pages/stats/stats.component';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
