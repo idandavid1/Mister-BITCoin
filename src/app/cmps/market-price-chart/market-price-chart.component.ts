@@ -23,7 +23,7 @@ export class MarketPriceChartComponent {
         datasets: [{
           label: 'Market Price last 30 days',
           data: this.getData(prices),
-          tension: 0.1
+          tension: 0.1,
         }]
       },
     });
