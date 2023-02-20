@@ -1,12 +1,6 @@
 <section class="contact-index">
-  <contact-details *ngIf="selectContactId; else contactList" (selectContact)="onSelectContactId($event)" [contactId]="selectContactId"></contact-details>
-  <ng-template #contactList>
-    <div class="main-container">
-      <contact-filter></contact-filter>
-      <contact-list (selectContact)="onSelectContactId($event)" [contacts]="contacts$ | async"></contact-list>
-    </div>
-  </ng-template>
+  <div class="main-container">
+    <contact-filter></contact-filter>
+    <contact-list  [contacts]="contacts$ | async"></contact-list>
+  </div>
 </section>
-
-
-

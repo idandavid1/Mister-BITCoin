@@ -136,7 +136,7 @@ export class ContactService {
 
 
 
-    constructor() {}
+    constructor() { }
 
     public loadContacts(): void {
         const filterBy = this._contactFilter$.value
@@ -159,6 +159,14 @@ export class ContactService {
 
     public saveContact(contact: Contact) {
         return contact._id ? this._updateContact(contact) : this._addContact(contact)
+    }
+
+    public getEmptyContact() {
+        return {
+            name: '',
+            email: '',
+            phone: ''
+        }
     }
 
     private _updateContact(contact: Contact) {
@@ -190,7 +198,7 @@ export class ContactService {
         this.loadContacts()
     }
 
-    private _filter(contacts: Contact[] , term: string) {
+    private _filter(contacts: Contact[], term: string) {
         term = term.toLocaleLowerCase()
         return contacts.filter(contact => {
             return contact.name.toLocaleLowerCase().includes(term) ||

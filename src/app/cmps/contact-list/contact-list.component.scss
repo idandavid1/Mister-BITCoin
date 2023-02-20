@@ -1,39 +1,46 @@
 .contact-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin: 20px 0;
-  font-family: 'Fuzzy Bubbles', cursive;
-  list-style: none;
 
-  li {
-    background-color: aliceblue;
-    position: relative;
-    transition: transform .4s;
+  .add-btn{
+    font-size: 24px;
+    color: #457b9d;
     cursor: pointer;
+  }
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+    font-family: 'Fuzzy Bubbles', cursive;
+    list-style: none;
 
-    &:hover {
-      transform: scale(1.02);
+    li {
+      background-color: aliceblue;
+      position: relative;
+      transition: transform .4s;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.02);
+
+        .icons {
+          opacity: 1;
+        }
+      }
 
       .icons {
-        opacity: 1;
-      }
-    }
+        color: black;
+        padding: 10px;
+        opacity: 0;
 
-    .icons {
-      color: black;
-      padding: 10px;
-      opacity: 0;
+        .icon {
+          cursor: pointer;
+        }
 
-      .icon {
-        cursor: pointer;
-      }
-
-      .remove {
-        position: absolute;
-        right: 20px;
+        .remove {
+          position: absolute;
+          right: 20px;
+        }
       }
     }
   }
-
 }

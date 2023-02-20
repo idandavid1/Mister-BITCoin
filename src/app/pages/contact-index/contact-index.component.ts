@@ -13,16 +13,10 @@ export class ContactIndexComponent implements OnInit {
   constructor(private contactService: ContactService) { }
 
   contacts$ !: Observable<Contact[]>
-  selectContactId: string = ''
 
   ngOnInit() {
     this.contactService.loadContacts()
     this.contacts$ = this.contactService.contacts$;
   }
 
-
-  onSelectContactId(contactId:string) {
-    console.log(contactId)
-    this.selectContactId = contactId
-  }
 }

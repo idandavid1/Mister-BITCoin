@@ -1,0 +1,19 @@
+<section class="contact-edit">
+    <fa-icon (click)="onBack()" class="icon back" [icon]="faCircleArrowLeft"></fa-icon>
+    <fa-icon (click)="onRemove()" class="icon remove" [icon]="faTrash"></fa-icon>
+    <h2 class="title">{{contact._id ? 'Edit' : 'Add'}} Contact</h2>
+    <img *ngIf="contact._id" src="https://robohash.org/{{contact._id}}?set=set5" alt="">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label for="name">Name:
+            <input formControlName="name" id="name" placeholder="Name" />
+        </label>
+        <label for="email">Email:
+            <input formControlName="email" id="email" placeholder="Email" />
+        </label>
+        <label for="phone">Phone:
+            <input formControlName="phone" id="phone" placeholder="Phone" />
+        </label>
+
+        <button>Save</button>
+    </form>
+</section>

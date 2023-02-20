@@ -1,9 +1,12 @@
-<ul class="contact-list">
+<section class="contact-list">
+  <fa-icon class="add-btn" [icon]="faUserPlus" [routerLink]="'edit'"></fa-icon>
+  <ul>
     <li *ngFor="let contact of contacts">
       <div class="icons">
-        <fa-icon class="icon" [icon]="faUserPen"></fa-icon>
+        <fa-icon [routerLink]="['edit' , contact._id]" class="icon" [icon]="faUserPen"></fa-icon>
         <fa-icon class="icon remove" [icon]="faTrash"></fa-icon>
       </div>
-      <contact-preview (selectContact)="selectContact.emit($event)" [contact]="contact"></contact-preview>
+      <contact-preview [contact]="contact"></contact-preview>
     </li>
-</ul>
+  </ul>
+</section>

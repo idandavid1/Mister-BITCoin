@@ -1,0 +1,64 @@
+.contact-edit {
+    width: 700px;
+    margin: 50px auto;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+
+    .title{
+        font-family: 'Outfit', sans-serif;
+        font-size: 26px;
+        color: #457b9d;
+    }
+    .icon {
+        font-size: 22px;
+        cursor: pointer;
+        color: #457b9d;
+    }
+
+    .back {
+        float: left;
+    }
+
+    .remove {
+        float: right;
+    }
+
+    >* {
+        margin-bottom: 35px;
+    }
+
+    img {
+        border-radius: 50%;
+        width: 30%;
+        border: 1px solid rgba(121, 114, 114, 0.225);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        input {
+            width: 300px;
+            height: 30px;
+            border-radius: 4px;
+            padding-left: 10px;
+        }
+
+
+        button {
+            margin-top: 25px;
+            background-color: #457b9d;
+            margin-right: 10px;
+            width: 100px;
+            height: 30px;
+            border-radius: 4px;
+            font-size: 17px;
+            color: white;
+            cursor: pointer;
+        }
+    }
+}

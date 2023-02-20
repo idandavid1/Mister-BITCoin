@@ -12,8 +12,10 @@ import { ContactPreviewComponent } from '../cmps/contact-preview/contact-preview
 import { AppHeaderComponent } from '../cmps/app-header/app-header.component';
 import { ContactFilterComponent } from '../cmps/contact-filter/contact-filter.component';
 import { StatsComponent } from '../pages/stats/stats.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CommonModule } from '@angular/common';
+import { ContactEditComponent } from '../pages/contact-edit/contact-edit.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ContactIndexComponent,
     ContactDetailsComponent,
     ContactListComponent,
+    ContactEditComponent,
     ContactPreviewComponent,
     AppHeaderComponent,
     ContactFilterComponent,
@@ -32,7 +35,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

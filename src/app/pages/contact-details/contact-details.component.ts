@@ -1,28 +1,38 @@
-import { Component, Input, OnInit , EventEmitter, Output} from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
-import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'contact-details',
   templateUrl: './contact-details.component.html',
   styleUrls: ['./contact-details.component.scss']
 })
-export class ContactDetailsComponent implements OnInit {
+export class ContactDetailsComponent implements OnInit, OnDestroy {
 
-  constructor(private contactService: ContactService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+  ) { }
 
-  @Input() contactId !: string
-  @Output() selectContact = new EventEmitter();
-  contact !: Contact | undefined
+  contact !: Contact
+  subscription!: Subscription
 
-  async ngOnInit() {
-    const contact = await lastValueFrom(this.contactService.getContactById(this.contactId))
-    this.contact = contact;
+  ngOnInit(): void {
+    // this.subscription = this.route.params.subscribe(async param => {
+    //   this.contact = await lastValueFrom(this.contactService.getContactById(param['contactId']))
+    // })
+    this.subscription = this.route.data.subscribe(data => {
+      this.contact = data['contact']
+    })
   }
-  
-  onBack() {
-    this.selectContact.emit('')
+
+  onBack(): void {
+    this.router.navigateByUrl('/contact')
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 
 }
