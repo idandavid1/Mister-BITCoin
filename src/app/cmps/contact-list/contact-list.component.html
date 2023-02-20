@@ -1,5 +1,9 @@
 <ul class="contact-list">
     <li *ngFor="let contact of contacts">
+      <div class="icons">
+        <fa-icon class="icon" [icon]="faUserPen"></fa-icon>
+        <fa-icon class="icon remove" [icon]="faTrash"></fa-icon>
+      </div>
       <contact-preview (selectContact)="selectContact.emit($event)" [contact]="contact"></contact-preview>
     </li>
 </ul>

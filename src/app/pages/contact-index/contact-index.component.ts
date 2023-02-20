@@ -9,7 +9,7 @@ import { ContactService } from 'src/app/services/contact.service';
   styleUrls: ['./contact-index.component.scss']
 })
 export class ContactIndexComponent implements OnInit {
-  
+
   constructor(private contactService: ContactService) { }
 
   contacts$ !: Observable<Contact[]>

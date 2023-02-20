@@ -2,13 +2,38 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  margin: 20px 0 ;
+  margin: 20px 0;
   font-family: 'Fuzzy Bubbles', cursive;
   list-style: none;
 
-  .remove-btn {
-      position: absolute;
-      right: 20px;
-      cursor: pointer;
+  li {
+    background-color: aliceblue;
+    position: relative;
+    transition: transform .4s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.02);
+
+      .icons {
+        opacity: 1;
+      }
+    }
+
+    .icons {
+      color: black;
+      padding: 10px;
+      opacity: 0;
+
+      .icon {
+        cursor: pointer;
+      }
+
+      .remove {
+        position: absolute;
+        right: 20px;
+      }
+    }
   }
+
 }
