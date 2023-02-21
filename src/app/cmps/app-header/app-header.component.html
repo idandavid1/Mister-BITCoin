@@ -2,7 +2,7 @@
   <div class="main-container">
     <div class="header-content">
       <img src="../../../assets/imgs/logo.png" class="logo" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"/>
-      <nav>
+      <nav *ngIf="user">
         <span routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</span>
         <span routerLink="/contact" routerLinkActive="active">Contact</span>
         <span routerLink="/stats" routerLinkActive="active">Stats</span>
