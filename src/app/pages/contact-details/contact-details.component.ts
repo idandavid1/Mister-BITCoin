@@ -17,9 +17,8 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService
-    ) { }
-  user !: User
+    private userService: UserService) {}
+    user !: User
   moves !: Move[]
   contact !: Contact
   subscription!: Subscription
