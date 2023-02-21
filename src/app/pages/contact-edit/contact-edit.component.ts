@@ -1,14 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { UserService } from 'src/app/services/user.service';
-
-
 
 @Component({
   selector: 'contact-edit',
@@ -22,6 +19,7 @@ export class ContactEditComponent implements OnInit, OnDestroy {
   subscription!: Subscription
   faTrash = faTrash
   faCircleArrowLeft = faCircleArrowLeft
+  validation = { name: false, email: false, phone: false, }
 
   constructor(
     private contactService: ContactService,
@@ -39,12 +37,34 @@ export class ContactEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
+    console.log(this.form.value)
+    if (!this.checkValidation(this.form.value)) return
     try {
       this.contactService.saveContact(this.form.value)
       this.onBack()
     } catch (err) {
       console.error(err)
     }
+  }
+
+  checkValidation(contact: Contact) {
+    if (contact.name.length < 2) {
+      this.validation.name = true
+      return false
+    } else this.validation.name = false
+    
+    const mailRegex: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    if (!mailRegex.test(contact.email)) {
+      this.validation.email = true
+      return false
+    } else this.validation.email = false
+    
+    const phoneRegex = /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/
+    if (!phoneRegex.test(contact.phone)) {
+      this.validation.phone = true
+      return false
+    } else this.validation.phone = false
+    return true
   }
 
   onRemove() {
@@ -64,4 +84,3 @@ export class ContactEditComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe()
   }
 }
-
