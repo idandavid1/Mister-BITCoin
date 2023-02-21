@@ -1,0 +1,14 @@
+<section class="signup">
+  <div class="signup-form">
+    <h2>Signup / Login</h2>
+    <form (submit)="onLogin()">
+      <input
+        type="text"
+        placeholder="Enter your name.."
+        [(ngModel)]="user.name"
+        name="name"
+      />
+      <button>Login</button>
+    </form>
+  </div>
+</section>
