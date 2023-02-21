@@ -33,7 +33,7 @@
         text-transform: capitalize;
         margin-bottom: 60px;
     }
-    
+
     .description {
         font-family: 'Outfit', sans-serif;
         font-weight: 400;
@@ -43,7 +43,7 @@
         word-spacing: 2px;
         line-height: 20px;
     }
-    
+
     .main-content {
         >*{
             display: flex;
@@ -67,14 +67,14 @@
         background: linear-gradient(#faa504, #141001);
         margin: auto;
         position: absolute;
-        top:-66%;
+        top: -470px;
         left: 0;
         right: 0;
         bottom: 0;
         animation: rotate_4001510 7s infinite linear;
         transform-style: preserve-3d;
       }
-      
+
       .coin .side, .coin:before, .coin:after {
         content: "";
         position: absolute;
@@ -90,28 +90,28 @@
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
       }
-      
+
       .coin .tails, .coin:after {
         left: -0.4em;
         transform: rotateY(90deg);
       }
-      
+
       .coin:before, .coin:after {
         background: linear-gradient(#faa504, #141001);
         backface-visibility: hidden;
         transform: rotateY(90deg);
       }
-      
+
       .coin:after {
         transform: rotateY(-90deg);
       }
-      
+
       @keyframes rotate_4001510 {
         100% {
           transform: rotateY(360deg);
         }
       }
-      
+
       .svg_back {
         transform: scaleX(-1);
       }
