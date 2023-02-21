@@ -52,13 +52,13 @@ export class ContactEditComponent implements OnInit, OnDestroy {
       this.validation.name = true
       return false
     } else this.validation.name = false
-    
+
     const mailRegex: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     if (!mailRegex.test(contact.email)) {
       this.validation.email = true
       return false
     } else this.validation.email = false
-    
+
     const phoneRegex = /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/
     if (!phoneRegex.test(contact.phone)) {
       this.validation.phone = true
