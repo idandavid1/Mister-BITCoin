@@ -1,14 +1,9 @@
 <section class="signup">
   <div class="signup-form">
     <h2>Signup / Login</h2>
-    <form (submit)="onLogin()">
-      <input
-        type="text"
-        placeholder="Enter your name.."
-        [(ngModel)]="user.name"
-        name="name"
-      />
-      <button>Connect</button>
+    <form #form="ngForm" (submit)="onLogin(form)">
+      <input type="text" placeholder="Enter your name.." [(ngModel)]="user.name" required minlength="2" name="name" />
+      <button *ngIf="form.valid">Connect</button>
     </form>
   </div>
 </section>
