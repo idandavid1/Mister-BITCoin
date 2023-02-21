@@ -7,4 +7,6 @@
         <span>Phone: {{ contact.phone }}</span>
         <img src="https://robohash.org/{{contact._id}}?set=set5" alt="" />
     </div>
+    <transfer-fund (updateMoves)="updateMoves()" [contact]="contact"></transfer-fund>
+    <move-list *ngIf="moves.length" [moves]="moves"></move-list>
 </article>

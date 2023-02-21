@@ -1,0 +1,79 @@
+.transfer-fund {
+
+  h2 {
+    font-family: 'Outfit', sans-serif;
+    text-align: center;
+    margin-top: 20px;
+    color: #457b9d;
+  }
+
+  .amount-form {
+    position: relative;
+    margin: 20px 0 40px;
+    width: 190px;
+
+    input {
+      background-color: transparent;
+      border: 0;
+      border-bottom: 2px #457b9d solid;
+      display: block;
+      width: 100%;
+      padding: 15px 0;
+      font-size: 18px;
+      color: #457b9d;
+      margin-left: 70px;
+
+      &:focus {
+        outline: 0;
+        border-bottom-color: #457b9d;
+      }
+
+      &:valid {
+        outline: 0;
+        border-bottom-color: #457b9d;
+      }
+
+      &:focus+label {
+        span {
+          color: #457b9d;
+          transform: translateX(-70px);
+        }
+      }
+
+      &:valid+label {
+        span {
+          color: #457b9d;
+          transform: translateX(-70px);
+        }
+      }
+    }
+
+    label {
+      position: absolute;
+      top: 15px;
+      left: 70px;
+      pointer-events: none;
+
+      span {
+        display: inline-block;
+        font-size: 18px;
+        min-width: 5px;
+        color: #457b9d;
+        transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+    }
+
+    button {
+      position: absolute;
+      top: 20px;
+      right: -185px;
+      border-radius: 6px;
+      border: none;
+      padding: 6px 12px;
+      font-size: 18px;
+      background-color: #457b9d;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}

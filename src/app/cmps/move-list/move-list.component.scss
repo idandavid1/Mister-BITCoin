@@ -1,0 +1,19 @@
+.move-list {
+  background-color: #587aaa;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  ul{
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 380px;
+      overflow-y: auto;
+      list-style: none;
+  }
+  h2{
+      text-align: center;
+      color: white;
+  }
+}

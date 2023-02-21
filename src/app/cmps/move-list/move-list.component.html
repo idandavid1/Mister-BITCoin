@@ -1,1 +1,8 @@
-<p>move-list works!</p>
+<section class="move-list">
+  <h2>Move list</h2>
+  <ul class="move-list">
+    <li *ngFor="let move of moves">
+      <move-preview [move]="move"></move-preview>
+    </li>
+  </ul>
+</section>
