@@ -1,21 +1,20 @@
-import { Component } from '@angular/core';
-import { BitcoinService } from 'src/app/services/bitcoin.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { Value } from 'src/app/models/graph.model';
+import { Data } from '@angular/router';
 Chart.register(...registerables);
-
 
 @Component({
   selector: 'market-price-chart',
   templateUrl: './market-price-chart.component.html',
   styleUrls: ['./market-price-chart.component.scss']
 })
-export class MarketPriceChartComponent {
-  constructor(private bitcoinService: BitcoinService) { }
 
+export class MarketPriceChartComponent implements OnInit {
+
+  @Input() prices !: Data
   async ngOnInit() {
-    let prices = await this.bitcoinService.getMarketPrice()
-    prices = prices.values.splice(prices.values.length - 30)
+    let prices = this.prices['values'].splice(this.prices['values'].length - 30)
     var marketPrice = new Chart("market-price", {
       type: 'line',
       data: {

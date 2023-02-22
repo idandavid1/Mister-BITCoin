@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
+import { BitcoinService } from 'src/app/services/bitcoin.service';
+import { Data } from '../../models/graph.model'
 
 @Component({
   selector: 'stats',
@@ -8,11 +8,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent {
-  constructor(
-    private router: Router,
-    private userService: UserService) {
-    const user = this.userService.getUser()
-    if(!user) this.router.navigateByUrl('/signup')
-   }
-
+  constructor(private bitcoinService : BitcoinService) {}
+  prices !: Data
+  async ngOnInit() {
+    this.prices = await this.bitcoinService.getMarketPrice()
+  }
 }

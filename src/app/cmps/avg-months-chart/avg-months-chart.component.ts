@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BitcoinService } from 'src/app/services/bitcoin.service';
 import { Chart, registerables } from 'chart.js';
 import { Value } from 'src/app/models/graph.model';
+import { Data } from '@angular/router';
 Chart.register(...registerables);
 
 
@@ -10,19 +11,17 @@ Chart.register(...registerables);
   templateUrl: './avg-months-chart.component.html',
   styleUrls: ['./avg-months-chart.component.scss']
 })
-export class AvgMonthsChartComponent {
-  constructor(private bitcoinService: BitcoinService) { }
+export class AvgMonthsChartComponent implements OnInit{
+  @Input() prices !: Data
 
   async ngOnInit() {
-    const prices = await this.bitcoinService.getMarketPrice()
-
     var myChart = new Chart("myChart", {
       type: 'bar',
       data: {
-        labels: this.getMonthNames(prices.values),
+        labels: this.getMonthNames(this.prices['values']),
         datasets: [{
           label: 'Market Price average 5 months',
-          data: this.getData(prices.values),
+          data: this.getData(this.prices['values']),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',

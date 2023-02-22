@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { StatsComponent } from './pages/stats/stats.component';
 import { ContactResolver } from './services/contact.resolver';
 import { SignupComponent } from './pages/signup/signup.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -21,10 +22,10 @@ const routes: Routes = [
     component: ContactDetailsComponent,
     resolve: { contact: ContactResolver }
   },
-  { path: 'contact', component: ContactIndexComponent },
-  { path: 'stats', component: StatsComponent },
+  { path: 'contact', component: ContactIndexComponent, canActivate: [AuthGuard] },
+  { path: 'stats', component: StatsComponent, canActivate: [AuthGuard] },
   { path: 'signup', component: SignupComponent },
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

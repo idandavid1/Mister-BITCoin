@@ -1,5 +1,5 @@
 
-<section class="main-container">
-  <avg-months-chart></avg-months-chart>
-  <market-price-chart></market-price-chart>
+<section class="main-container" *ngIf="prices">
+  <avg-months-chart [prices]="prices"></avg-months-chart>
+  <market-price-chart [prices]="prices"></market-price-chart>
 </section>
