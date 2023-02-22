@@ -66,8 +66,10 @@
         height: 1em;
         background: linear-gradient(#faa504, #141001);
         margin: auto;
-        position: absolute;
-        top: -470px;
+        // position: absolute;
+        position: sticky;
+        // top: -470px;
+        top: -160px;
         left: 0;
         right: 0;
         bottom: 0;
