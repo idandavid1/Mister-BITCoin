@@ -1,4 +1,6 @@
-@import "../../../assets/styles/variables";
-@import "../../../assets/styles/mixins";
-@import "../../../assets/styles/layout";
-
+.stats-page {
+    >* {
+        max-height: 40%;
+        padding-bottom: 5%;
+    }
+}
