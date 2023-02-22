@@ -1,23 +1,36 @@
 <section class="contact-edit">
     <fa-icon (click)="onBack()" class="icon back" [icon]="faCircleArrowLeft"></fa-icon>
     <fa-icon (click)="onRemove()" class="icon remove" [icon]="faTrash"></fa-icon>
-    <h2 class="title">{{contact._id ? 'Edit' : 'Add'}} Contact</h2>
-    <img *ngIf="contact._id" src="https://robohash.org/{{contact._id}}?set=set5" alt="">
-
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <label for="name">Name:
-            <input formControlName="name" id="name" placeholder="Name" />
-            <p *ngIf="validation.name">Name is required!</p>
-        </label>
-        <label for="email">Email:
-            <input formControlName="email" id="email" placeholder="Email" />
-            <p *ngIf="validation.email">Invalid Email!</p>
-        </label>
-        <label for="phone">Phone:
-            <input formControlName="phone" id="phone" placeholder="Phone" />
-            <p *ngIf="validation.phone">Phone is required!</p>
-        </label>
-
-        <button>Save</button>
+    <h2 class="title">{{contact?._id ? 'Edit' : 'Add'}} Contact</h2>
+    <img *ngIf="contact?._id" src="https://robohash.org/{{contact._id}}?set=set5" alt="">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <label for="name">Name:
+          <input formControlName="name" id="name" class="form-control" placeholder="Name"/>
+          <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)" class="alert alert-danger">
+            <div *ngIf="form.controls['name'].errors?.['required']">
+              Name is required.
+            </div>
+            <div *ngIf="form.controls['name'].errors?.['minlength']">
+              Name must be at least 3 characters long.
+            </div>
+          </div>
+      </label>
+      <label for="email">Email:
+          <input formControlName="email" type="email" id="email" placeholder="Email"/>
+          <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"class="alert alert-danger">
+            <div>
+              Invalid email.
+            </div>
+          </div>
+      </label>
+      <label for="phone">Phone:
+          <input formControlName="phone" id="phone" placeholder="Phone" required/>
+          <div *ngIf="form.controls['phone'].invalid && (form.controls['phone'].dirty || form.controls['phone'].touched)"class="alert alert-danger">
+            <div>
+              Invalid phone.
+            </div>
+          </div>
+      </label>
+      <button [disabled]="form.pristine || form.invalid">Save</button>
     </form>
 </section>

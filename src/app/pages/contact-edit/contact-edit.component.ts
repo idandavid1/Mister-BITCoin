@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
@@ -19,52 +19,36 @@ export class ContactEditComponent implements OnInit, OnDestroy {
   subscription!: Subscription
   faTrash = faTrash
   faCircleArrowLeft = faCircleArrowLeft
-  validation = { name: false, email: false, phone: false, }
 
   constructor(
     private contactService: ContactService,
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder) {
-    this.form = this.fb.group({})
+      this.form = this.fb.group({
+        name: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+        phone: ['', [Validators.required, Validators.pattern('^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$')]]
+    })
   }
 
   ngOnInit(): void {
     this.subscription = this.route.data.subscribe(({ contact }) => {
-      this.contact = contact || this.contactService.getEmptyContact() as Contact
+      if (contact) {
+        this.contact = contact
+        this.form.patchValue(contact)
+      }
     })
-    this.form = this.fb.group(this.contact)
   }
 
   onSubmit(): void {
-    console.log(this.form.value)
-    if (!this.checkValidation(this.form.value)) return
     try {
-      this.contactService.saveContact(this.form.value)
+      const contact = { ...this.contact, ...this.form.value }
+      this.contactService.saveContact(contact)
       this.onBack()
     } catch (err) {
       console.error(err)
     }
-  }
-
-  checkValidation(contact: Contact) {
-    if (contact.name.length < 2) {
-      this.validation.name = true
-      return false
-    } else this.validation.name = false
-
-    const mailRegex: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    if (!mailRegex.test(contact.email)) {
-      this.validation.email = true
-      return false
-    } else this.validation.email = false
-
-    const phoneRegex = /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/
-    if (!phoneRegex.test(contact.phone)) {
-      this.validation.phone = true
-      return false
-    } else this.validation.phone = false
-    return true
   }
 
   onRemove() {
